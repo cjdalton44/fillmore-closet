@@ -1,63 +1,72 @@
-/* Basic reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+.header {
+    background-color: #f8f9fa;
+    padding: 20px;
+    text-align: center;
+    font-size: 24px;
+    color: #333;
 }
 
-/* Body styling */
-body {
-    background-color: #f0f0f0;
-    font-family: 'Arial', sans-serif;
-}
-
-/* Game Container */
-.game-container {
-    width: 100%;
-    height: 100vh;
+.character-display {
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
+    margin: 20px;
 }
 
-/* Character Styles */
 .character {
-    width: 200px;
-    height: auto;
-    position: absolute;
-    bottom: 10px;
+    width: 300px;
+    height: 400px;
+    background-color: #e9ecef;
+    border: 2px solid #ced4da;
+    border-radius: 10px;
 }
 
-/* Item Styles */
-.item {
-    width: 50px;
-    height: auto;
-    cursor: pointer;
-    transition: transform 0.2s ease;
+.controls {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
 }
 
-.item:hover {
-    transform: scale(1.1);
+.color-options,
+.toggle-options {
+    display: flex;
+    flex-direction: column;
 }
 
-/* Button Styles */
+.upload-section {
+    margin: 20px;
+    text-align: center;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
 button {
-    padding: 10px 20px;
-    background-color: #4CAF50;
+    background-color: #007bff;
     color: white;
     border: none;
     border-radius: 5px;
+    padding: 10px 20px;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #0056b3;
 }
 
-/* Media Queries */
 @media (max-width: 768px) {
-    .game-container {
+    .character-display {
+        flex-direction: column;
+    }
+    .character {
+        width: 80%;
+        height: auto;
+    }
+    .controls {
         flex-direction: column;
     }
 }
