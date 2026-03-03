@@ -1,1 +1,171 @@
-<!DOCTYPE html>\n<html lang="en">\n<head>\n    <meta charset="UTF-8">\n    <meta name="viewport" content="width=device-width, initial-scale=1.0">\n    <title>Dress-Up Game</title>\n    <link rel="stylesheet" href="styles.css">\n</head>\n<body>\n    <header>\n        <h1>Welcome to the Dress-Up Game!</h1>\n        <p>Choose your outfits and create your unique style.</p>\n    </header>\n    <main>\n        <section id="clothes">\n            <h2>Choose Your Clothes</h2>\n            <div class="clothing-item">\n                <img src="dress1.png" alt="Dress 1">\n                <button>Select Dress 1</button>\n            </div>\n            <div class="clothing-item">\n                <img src="dress2.png" alt="Dress 2">\n                <button>Select Dress 2</button>\n            </div>\n            <!-- Add more clothing items as needed -->\n        </section>\n        <section id="selected-outfit">\n            <h2>Your Selected Outfit</h2>\n            <div id="outfit-display">\n                <!-- Selected outfit will be displayed here -->\n            </div>\n        </section>\n    </main>\n    <footer>\n        <p>&copy; 2026 Dress-Up Game. All rights reserved.</p>\n    </footer>\n    <script src="script.js"></script>\n</body>\n</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fillmore Closet - Dress Up Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>👗 Fillmore Closet 👔</h1>
+            <p>Mix and match outfits for our characters!</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Character Selection -->
+            <div class="character-selector">
+                <h2>Select a Character</h2>
+                <button class="char-btn active" data-character="male">
+                    👨 Red-Haired Man
+                </button>
+                <button class="char-btn" data-character="female">
+                    👩 Brunette Woman
+                </button>
+            </div>
+
+            <!-- Game Container -->
+            <div class="game-container">
+                <!-- Character Display -->
+                <div class="character-display">
+                    <svg id="character" width="300" height="400" viewBox="0 0 300 400">
+                        <!-- Head -->
+                        <circle id="head" cx="150" cy="80" r="40" fill="#f4a460"/>
+                        <!-- Hair -->
+                        <path id="hair" d="M 110 80 Q 110 40 150 40 Q 190 40 190 80" fill="#d2691e" stroke="#8b4513" stroke-width="2"/>
+                        <!-- Eyes -->
+                        <circle cx="135" cy="70" r="5" fill="#333"/>
+                        <circle cx="165" cy="70" r="5" fill="#333"/>
+                        <!-- Mouth -->
+                        <path d="M 140 85 Q 150 90 160 85" fill="none" stroke="#333" stroke-width="2"/>
+                        
+                        <!-- Accessories: Glasses -->
+                        <g id="glasses-slot" style="display:none;">
+                            <rect x="125" y="65" width="15" height="12" rx="3" fill="none" stroke="#333" stroke-width="2"/>
+                            <rect x="160" y="65" width="15" height="12" rx="3" fill="none" stroke="#333" stroke-width="2"/>
+                            <line x1="140" y1="71" x2="160" y2="71" stroke="#333" stroke-width="2"/>
+                        </g>
+
+                        <!-- Jewelry: Necklace -->
+                        <g id="necklace-slot" style="display:none;">
+                            <path d="M 130 120 Q 150 130 170 120" fill="none" stroke="#ffd700" stroke-width="3"/>
+                            <circle cx="150" cy="135" r="5" fill="#ffd700"/>
+                        </g>
+
+                        <!-- Shirt -->
+                        <g id="shirt-slot">
+                            <rect x="110" y="120" width="80" height="60" rx="5" fill="#4169e1" stroke="#333" stroke-width="2"/>
+                            <!-- Shirt buttons -->
+                            <circle cx="150" cy="140" r="2" fill="#333"/>
+                            <circle cx="150" cy="160" r="2" fill="#333"/>
+                        </g>
+
+                        <!-- Pants -->
+                        <g id="pants-slot">
+                            <!-- Left pant leg -->
+                            <rect x="115" y="180" width="25" height="80" fill="#2f4f4f" stroke="#333" stroke-width="2"/>
+                            <!-- Right pant leg -->
+                            <rect x="160" y="180" width="25" height="80" fill="#2f4f4f" stroke="#333" stroke-width="2"/>
+                        </g>
+
+                        <!-- Shoes -->
+                        <g id="shoes-slot">
+                            <!-- Left shoe -->
+                            <ellipse cx="127" cy="270" rx="15" ry="8" fill="#8b4513" stroke="#333" stroke-width="2"/>
+                            <!-- Right shoe -->
+                            <ellipse cx="173" cy="270" rx="15" ry="8" fill="#8b4513" stroke="#333" stroke-width="2"/>
+                        </g>
+
+                        <!-- Hat -->
+                        <g id="hat-slot" style="display:none;">
+                            <path d="M 120 35 L 130 20 L 170 20 L 180 35" fill="#ff6347" stroke="#333" stroke-width="2"/>
+                            <ellipse cx="150" cy="35" rx="32" ry="8" fill="#ff6347" stroke="#333" stroke-width="2"/>
+                        </g>
+
+                        <!-- Arms -->
+                        <line x1="110" y1="130" x2="80" y2="150" stroke="#f4a460" stroke-width="8" stroke-linecap="round"/>
+                        <line x1="190" y1="130" x2="220" y2="150" stroke="#f4a460" stroke-width="8" stroke-linecap="round"/>
+                    </svg>
+                </div>
+
+                <!-- Clothing Controls -->
+                <div class="controls">
+                    <div class="control-group">
+                        <h3>👔 Shirt</h3>
+                        <div class="color-options">
+                            <button class="color-btn" data-item="shirt" data-value="blue" style="background-color: #4169e1;" title="Blue"></button>
+                            <button class="color-btn" data-item="shirt" data-value="red" style="background-color: #ff4500;" title="Red"></button>
+                            <button class="color-btn" data-item="shirt" data-value="green" style="background-color: #228b22;" title="Green"></button>
+                            <button class="color-btn" data-item="shirt" data-value="purple" style="background-color: #8b008b;" title="Purple"></button>
+                            <button class="color-btn" data-item="shirt" data-value="black" style="background-color: #000;" title="Black"></button>
+                            <button class="color-btn" data-item="shirt" data-value="yellow" style="background-color: #ffd700;" title="Yellow"></button>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <h3>👖 Pants</h3>
+                        <div class="color-options">
+                            <button class="color-btn" data-item="pants" data-value="black" style="background-color: #000;" title="Black"></button>
+                            <button class="color-btn" data-item="pants" data-value="blue" style="background-color: #1e90ff;" title="Blue"></button>
+                            <button class="color-btn" data-item="pants" data-value="gray" style="background-color: #808080;" title="Gray"></button>
+                            <button class="color-btn" data-item="pants" data-value="khaki" style="background-color: #f0e68c;" title="Khaki"></button>
+                            <button class="color-btn" data-item="pants" data-value="brown" style="background-color: #8b4513;" title="Brown"></button>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <h3>👞 Shoes</h3>
+                        <div class="color-options">
+                            <button class="color-btn" data-item="shoes" data-value="brown" style="background-color: #8b4513;" title="Brown"></button>
+                            <button class="color-btn" data-item="shoes" data-value="black" style="background-color: #000;" title="Black"></button>
+                            <button class="color-btn" data-item="shoes" data-value="white" style="background-color: #fff; border: 1px solid #ccc;" title="White"></button>
+                            <button class="color-btn" data-item="shoes" data-value="red" style="background-color: #ff0000;" title="Red"></button>
+                            <button class="color-btn" data-item="shoes" data-value="pink" style="background-color: #ff69b4;" title="Pink"></button>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <h3>🤓 Accessories</h3>
+                        <div class="toggle-options">
+                            <button class="toggle-btn" data-item="glasses">Toggle Glasses</button>
+                            <button class="toggle-btn" data-item="necklace">Toggle Necklace</button>
+                            <button class="toggle-btn" data-item="hat">Toggle Hat</button>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <h3>🎩 Hat Color</h3>
+                        <div class="color-options">
+                            <button class="color-btn" data-item="hat" data-value="red" style="background-color: #ff6347;" title="Red"></button>
+                            <button class="color-btn" data-item="hat" data-value="black" style="background-color: #000;" title="Black"></button>
+                            <button class="color-btn" data-item="hat" data-value="blue" style="background-color: #4169e1;" title="Blue"></button>
+                            <button class="color-btn" data-item="hat" data-value="white" style="background-color: #fff; border: 1px solid #ccc;" title="White"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image Upload Section -->
+            <div class="upload-section">
+                <h2>📸 Upload Clothes Photo</h2>
+                <p>Upload a photo of clothes and we'll add it to the outfit!</p>
+                <input type="file" id="imageUpload" accept="image/*">
+                <div id="preview" style="display:none;">
+                    <h3>Preview:</h3>
+                    <img id="previewImg" src="" alt="Preview">
+                    <button id="addToOutfit">Add to Outfit</button>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button id="resetBtn" class="btn-primary">Reset Outfit</button>
+                <button id="screenshotBtn" class="btn-primary">Take Screenshot</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
